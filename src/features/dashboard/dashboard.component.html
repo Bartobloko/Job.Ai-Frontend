@@ -1,0 +1,141 @@
+<!-- Main Container -->
+<div class="p-6 bg-gray-50 min-h-noScroll">
+  <div class="max-w-7xl mx-auto space-y-6">
+    <!-- Header -->
+    <div class="flex justify-between items-center">
+      <h1 class="text-3xl font-bold text-gray-900">Job.Ai Dashboard</h1>
+      <div class="flex items-center gap-4">
+        <div class="flex items-center gap-2">
+          <div class="h-3 w-3 bg-green-500 rounded-full animate-pulse"></div>
+          <span class="text-sm font-medium">Bot Active</span>
+        </div>
+        <button type="button" class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 flex items-center"
+        (click)="onBotStart()">
+          <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="7.5 7 10 10" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+          </svg>
+          Run Bot
+        </button>
+      </div>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<!--    Scrapped Jobs  Jobs-->
+      <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+        <div class="flex items-center justify-between mb-4">
+          <h5 class="text-xl font-bold leading-none text-gray-900">Scrapped Jobs</h5>
+          <svg class="w-6 h-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-8l-2-2H5a2 2 0 00-2 2zm9 3v6m-3-3h6" />
+          </svg>
+        </div>
+        <div class="text-2xl font-bold text-gray-900">{{ stats.scrappedTotal }}</div>
+      </div>
+      <!-- Auto Applied Jobs -->
+      <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+        <div class="flex items-center justify-between mb-4">
+          <h5 class="text-xl font-bold leading-none text-gray-900">Applied Jobs</h5>
+          <svg class="w-6 h-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+        </div>
+        <div class="text-2xl font-bold text-gray-900">{{ stats.appliedJobs }}</div>
+      </div>
+
+      <!-- Scraped Today -->
+      <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+        <div class="flex items-center justify-between mb-4">
+          <h5 class="text-xl font-bold leading-none text-gray-900">Scraped Today</h5>
+          <svg class="w-6 h-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5M8 8v8m8-16l4 4-4 4m-4-4h7.5" />
+          </svg>
+        </div>
+        <div class="text-2xl font-bold text-gray-900">{{ stats.scrapedToday }}</div>
+      </div>
+
+      <!-- Applicable Jobs -->
+      <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+        <div class="flex items-center justify-between mb-4">
+          <h5 class="text-xl font-bold leading-none text-gray-900">Applicable Jobs</h5>
+          <svg class="w-6 h-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+          </svg>
+        </div>
+        <div class="text-2xl font-bold text-gray-900">{{ stats.applicableJobs }}</div>
+      </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- bot Configuration -->
+      <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+        <h5 class="mb-4 text-xl font-bold text-gray-900">Bot Configuration</h5>
+        <div class="space-y-4">
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900">AI Prompt</label>
+            <textarea rows="4" [(ngModel)]="botConfig.prompt" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Enter your AI evaluation prompt here..."></textarea>
+          </div>
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900">Job Experience</label>
+            <input type="text" [(ngModel)]="botConfig.experience" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5" placeholder="e.g., 5 years">
+          </div>
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900">Blocked Keywords</label>
+            <input type="text" [(ngModel)]="botConfig.blockedKeywords" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5" placeholder="Enter keywords separated by commas">
+          </div>
+        </div>
+      </div>
+
+      <!-- Activity Log -->
+      <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm h-96 overflow-y-scroll">
+        <h5 class="mb-4 text-xl font-bold text-gray-900">Activity Log</h5>
+        <div class="flow-root">
+          <ul role="list" class="divide-y divide-gray-200">
+            @for (activity of activityLog; track activity) {
+              <li class="py-3 sm:py-4">
+                <div class="flex items-start gap-4 text-sm">
+                  <time class="text-gray-500 min-w-[60px]">{{ activity.created_at | date:'dd/MM/yyyy HH:mm' }}</time>
+                  <span class="text-gray-900">{{ activity.description }}</span>
+                </div>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- bot Status -->
+    <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+      <h5 class="mb-4 text-xl font-bold text-gray-900">Bot Status</h5>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="flex items-center gap-4">
+          <svg class="w-8 h-8 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          <div>
+            <div class="text-sm font-medium text-gray-500">Status</div>
+            <div class="text-lg font-bold text-green-500">Active</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <svg class="w-8 h-8 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <div>
+            <div class="text-sm font-medium text-gray-500">Last Run</div>
+            <div class="text-lg font-bold text-gray-900">{{ stats.lastRun | date:'dd/MM/yyyy HH:mm' }}</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <svg class="w-8 h-8 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+          <div>
+            <div class="text-sm font-medium text-gray-500">Total Runs</div>
+            <div class="text-lg font-bold text-gray-900">{{ stats.botRuns }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

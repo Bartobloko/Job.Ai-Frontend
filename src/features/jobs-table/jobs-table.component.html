@@ -1,0 +1,135 @@
+<!-- jobs.component.html -->
+<div class="min-h-noScroll p-8">
+  <!-- Search and Filter Controls -->
+  <div class="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+    <div class="flex-1 max-w-md">
+      <div class="relative">
+        <input
+          type="text"
+          [(ngModel)]="searchQuery"
+          (ngModelChange)="filterJobs()"
+          placeholder="Search jobs..."
+          class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 pl-10 text-gray-900 focus:ring-primary-500 focus:border-primary-500"
+        />
+        <svg class="w-5 h-5 text-gray-500 absolute left-3 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+        </svg>
+      </div>
+    </div>
+    <div class="flex items-center gap-4">
+      <label class="flex items-center gap-2 text-gray-700">
+        <input
+          type="checkbox"
+          [(ngModel)]="showOnlyApplicable"
+          (change)="filterJobs()"
+          class="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 rounded focus:ring-primary-500"
+        />
+        Show only applicable jobs
+      </label>
+    </div>
+  </div>
+
+  <!-- New Jobs Table -->
+  <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-6 mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">New Job Listings</h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm text-left text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+        <tr>
+          @for (column of columns; track column) {
+            <th
+              (click)="sort(column)"
+              class="px-4 py-3 cursor-pointer hover:bg-gray-100"
+            >
+              <div class="flex items-center">
+                {{ column | titlecase }}
+                @if (sortColumn === column) {
+                  <span class="ml-1">
+                      {{ sortDirection === 'asc' ? '↑' : '↓' }}
+                    </span>
+                }
+              </div>
+            </th>
+          }
+        </tr>
+        </thead>
+        <tbody>
+          @for (job of filteredNewJobs; track job) {
+            <tr class="border-b hover:bg-gray-50">
+              <td class="px-4 py-3">
+                <span [class]="job.is_approved ? 'text-green-500' : 'text-gray-400'">
+                  {{ job.is_approved ? '✓' : '×' }}
+                </span>
+              </td>
+              <td class="px-4 py-3">{{ job.created_at | date:'dd/MM/yyyy HH:mm' }}</td>
+              <td class="px-4 py-3">
+                <a [href]="job.link" target="_blank" class="text-primary-600 hover:text-primary-700">
+                  {{ job.title }}
+                </a>
+              </td>
+              <td class="px-4 py-3">{{ job.description | slice:0:100 }}...</td>
+              <td class="px-4 py-3">{{ job.company }}</td>
+              <td class="px-4 py-3">
+                <a [href]="job.link" target="_blank" class="text-primary-600 hover:text-primary-700 font-medium">
+                  View
+                </a>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- All Jobs Table -->
+  <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-6">
+    <h2 class="text-xl font-bold text-gray-900 mb-4">All Job Listings</h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm text-left text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+        <tr>
+          @for (column of columns; track column) {
+            <th
+              (click)="sort(column)"
+              class="px-4 py-3 cursor-pointer hover:bg-gray-100"
+            >
+              <div class="flex items-center">
+                {{ column | titlecase }}
+                @if (sortColumn === column) {
+                  <span class="ml-1">
+                      {{ sortDirection === 'asc' ? '↑' : '↓' }}
+                    </span>
+                }
+              </div>
+            </th>
+          }
+        </tr>
+        </thead>
+        <tbody>
+          @for (job of filteredAllJobs; track job) {
+            <tr class="border-b hover:bg-gray-50">
+              <td class="px-4 py-3">
+                <span [class]="job.is_approved ? 'text-green-500' : 'text-gray-400'">
+                  {{ job.is_approved ? '✓' : '×' }}
+                </span>
+              </td>
+              <td class="px-4 py-3">{{ job.created_at | date:'dd/MM/yyyy HH:mm' }}</td>
+              <td class="px-4 py-3">
+                <a [href]="job.link" target="_blank" class="text-primary-600 hover:text-primary-700">
+                  {{ job.title }}
+                </a>
+              </td>
+              <td class="px-4 py-3">{{ job.description | slice:0:100 }}...</td>
+              <td class="px-4 py-3">{{ job.company }}</td>
+              <td class="px-4 py-3">
+                <a [href]="job.link" target="_blank" class="text-primary-600 hover:text-primary-700 font-medium">
+                  View
+                </a>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
