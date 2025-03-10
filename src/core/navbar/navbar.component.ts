@@ -1,8 +1,8 @@
 import {Component, inject} from '@angular/core';
 import {RouterLink} from '@angular/router';
-import {UsersStore} from '../../utils/state/users.state';
+import {UsersStore} from '../../utils/state/users/users.state';
 import { User } from '../../utils/interfaces/user';
-import {UserStore} from '../../utils/state/user.state';
+import {UserStore} from '../../utils/state/user/user.state';
 import {AuthService} from '../../utils/data-acces/auth/auth.service';
 
 @Component({

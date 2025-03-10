@@ -3,6 +3,7 @@ import {JobsTableComponent} from '../features/jobs-table/jobs-table.component';
 import {DashboardComponent} from '../features/dashboard/dashboard.component';
 import {AuthComponent} from '../features/auth/auth.component';
 import {authGuard} from '../utils/guards/auth.guard';
+import {SettingsComponent} from '../features/settings/settings.component';
 
 
 export const routes: Routes = [
@@ -28,4 +29,8 @@ export const routes: Routes = [
     path: 'jobs',
     component: JobsTableComponent,
   },
+  {
+    path: 'settings',
+    component: SettingsComponent,
+  }
 ];

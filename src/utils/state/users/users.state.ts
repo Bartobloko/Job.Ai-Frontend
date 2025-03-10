@@ -1,8 +1,8 @@
 import {patchState, signalStore, withMethods, withState} from '@ngrx/signals';
-import {UserService} from '../data-acces/user/user.service';
+import {UserService} from '../../data-acces/user/user.service';
 import {inject} from '@angular/core';
 import {firstValueFrom} from 'rxjs';
-import { User } from '../interfaces/user';
+import { User } from '../../interfaces/user';
 
 type UsersState = {
   users: User[];

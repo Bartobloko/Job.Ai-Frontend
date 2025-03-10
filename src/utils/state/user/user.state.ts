@@ -1,8 +1,8 @@
 import {patchState, signalStore, withMethods, withState} from '@ngrx/signals';
-import {AuthService} from '../data-acces/auth/auth.service';
+import {AuthService} from '../../data-acces/auth/auth.service';
 import {inject} from '@angular/core';
 import {firstValueFrom} from 'rxjs';
-import { User } from '../interfaces/user';
+import { User } from '../../interfaces/user';
 
 
 

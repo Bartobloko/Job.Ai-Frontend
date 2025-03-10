@@ -2,8 +2,9 @@ import {Component, inject, OnInit} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import {NavbarComponent} from '../core/navbar/navbar.component';
-import {UsersStore} from '../utils/state/users.state';
-import {UserStore} from '../utils/state/user.state';
+import {UsersStore} from '../utils/state/users/users.state';
+import {UserStore} from '../utils/state/user/user.state';
+import {SettingsStore} from '../utils/state/settings/settings.state';
 
 @Component({
     selector: 'app-root',
@@ -16,10 +17,15 @@ export class AppComponent implements OnInit {
 
   usersStore = inject(UsersStore);
   userStore = inject(UserStore);
+  settingsStore = inject(SettingsStore);
+
+  constructor() {
+  }
 
   ngOnInit(): void {
     this.loadAllUsers().then();
     this.loadUser().then();
+    this.loadSettings().then();
   }
 
 
@@ -29,6 +35,10 @@ export class AppComponent implements OnInit {
 
   async loadUser() {
     await this.userStore.loadUser();
+  }
+
+  async loadSettings() {
+    await this.settingsStore.loadSettings();
   }
 
 }
