@@ -4,7 +4,7 @@
     <!-- Header -->
     <div class="flex justify-between items-center animate-fade-in">
       <div>
-        <h1 class="text-2xl font-bold bg-gradient-to-r from-secondary-900 to-primary-700 bg-clip-text text-transparent">
+        <h1 class="text-xl font-bold bg-gradient-to-r from-secondary-900 to-primary-700 bg-clip-text text-transparent">
           Job.AI Dashboard
         </h1>
         <p class="text-secondary-600 mt-1 text-sm">Monitor your job search automation</p>
@@ -31,7 +31,7 @@
     </div>
 
     <!-- Stats Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 animate-slide-up">
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2 animate-slide-up">
       <!-- Scrapped Jobs -->
       <div class="group relative overflow-hidden bg-gradient-to-br from-white to-secondary-50/50 rounded-xl p-4 shadow-soft hover:shadow-medium transition-all duration-300 border border-white/50 hover:border-primary-200">
         <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary-500/10 to-transparent rounded-full -translate-y-16 translate-x-16"></div>
@@ -40,8 +40,8 @@
             <h5 class="text-sm font-semibold text-secondary-700 mb-1">Total Scraped</h5>
             <p class="text-xs text-secondary-500">Jobs found</p>
           </div>
-          <div class="w-8 h-8 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center shadow-medium group-hover:scale-110 transition-transform duration-300">
-            <ng-icon name="heroFolder" class="w-4 h-4 text-white"></ng-icon>
+          <div class="w-6 h-6 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center shadow-medium group-hover:scale-110 transition-transform duration-300">
+            <ng-icon name="heroFolder" class="w-3 h-3 text-white"></ng-icon>
           </div>
         </div>
         <div class="text-xl font-bold text-secondary-900 mb-1">{{ stats.scrappedTotal }}</div>
@@ -59,8 +59,8 @@
             <h5 class="text-sm font-semibold text-secondary-700 mb-1">Applied Jobs</h5>
             <p class="text-xs text-secondary-500">Auto submitted</p>
           </div>
-          <div class="w-8 h-8 bg-gradient-to-br from-success-500 to-success-600 rounded-lg flex items-center justify-center shadow-medium group-hover:scale-110 transition-transform duration-300">
-            <ng-icon name="heroDocument" class="w-4 h-4 text-white"></ng-icon>
+          <div class="w-6 h-6 bg-gradient-to-br from-success-500 to-success-600 rounded-lg flex items-center justify-center shadow-medium group-hover:scale-110 transition-transform duration-300">
+            <ng-icon name="heroDocument" class="w-3 h-3 text-white"></ng-icon>
           </div>
         </div>
         <div class="text-xl font-bold text-secondary-900 mb-1">{{ stats.appliedJobs }}</div>
@@ -78,8 +78,8 @@
             <h5 class="text-sm font-semibold text-secondary-700 mb-1">Today's Harvest</h5>
             <p class="text-xs text-secondary-500">Jobs scraped today</p>
           </div>
-          <div class="w-8 h-8 bg-gradient-to-br from-warning-500 to-warning-600 rounded-lg flex items-center justify-center shadow-medium group-hover:scale-110 transition-transform duration-300">
-            <ng-icon name="heroChartBarSquare" class="w-4 h-4 text-white"></ng-icon>
+          <div class="w-6 h-6 bg-gradient-to-br from-warning-500 to-warning-600 rounded-lg flex items-center justify-center shadow-medium group-hover:scale-110 transition-transform duration-300">
+            <ng-icon name="heroChartBarSquare" class="w-3 h-3 text-white"></ng-icon>
           </div>
         </div>
         <div class="text-xl font-bold text-secondary-900 mb-1">{{ stats.scrapedToday }}</div>
@@ -97,8 +97,8 @@
             <h5 class="text-sm font-semibold text-secondary-700 mb-1">Applicable Jobs</h5>
             <p class="text-xs text-secondary-500">Matching criteria</p>
           </div>
-          <div class="w-8 h-8 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center shadow-medium group-hover:scale-110 transition-transform duration-300">
-            <ng-icon name="heroFilter" class="w-4 h-4 text-white"></ng-icon>
+          <div class="w-6 h-6 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center shadow-medium group-hover:scale-110 transition-transform duration-300">
+            <ng-icon name="heroFilter" class="w-3 h-3 text-white"></ng-icon>
           </div>
         </div>
         <div class="text-xl font-bold text-secondary-900 mb-1">{{ stats.applicableJobs }}</div>
@@ -110,16 +110,16 @@
     </div>
 
     <!-- Main Content Grid -->
-    <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 xl:grid-cols-2 gap-2">
       <!-- Bot Configuration -->
       <div class="bg-white/80 backdrop-blur-sm border border-white/50 rounded-xl shadow-soft hover:shadow-medium transition-all duration-300 p-4">
         <div class="flex justify-between items-center mb-4">
           <div class="flex items-center">
-            <div class="w-8 h-8 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center mr-3">
-              <ng-icon name="heroCog6Tooth" class="w-4 h-4 text-white"></ng-icon>
+            <div class="w-6 h-6 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center mr-3">
+              <ng-icon name="heroCog6Tooth" class="w-3 h-3 text-white"></ng-icon>
             </div>
             <div>
-              <h5 class="text-lg font-bold text-secondary-900">Bot Configuration</h5>
+              <h5 class="text-base font-bold text-secondary-900">Bot Configuration</h5>
               <p class="text-xs text-secondary-600">Customize your automation settings</p>
             </div>
           </div>
@@ -212,8 +212,8 @@
               <ul role="list" class="space-y-3">
                 @for (activity of activityLog; track activity) {
                   <li class="group">
-                    <div class="flex items-start gap-4 p-4 rounded-lg hover:bg-secondary-50/50 transition-all duration-200">
-                      <div class="w-8 h-8 bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                    <div class="flex items-start gap-2 p-4 rounded-lg hover:bg-secondary-50/50 transition-all duration-200">
+                      <div class="w-6 h-6 bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
                         <ng-icon name="heroInformationCircle" class="w-4 h-4 text-primary-600"></ng-icon>
                       </div>
                       <div class="flex-1 min-w-0">
@@ -244,26 +244,26 @@
 
     <!-- Bot Status -->
     <div class="bg-white/80 backdrop-blur-sm border border-white/50 rounded-xl shadow-soft hover:shadow-medium transition-all duration-300 p-4">
-      <div class="flex items-center mb-8">
-        <div class="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center mr-4">
-          <ng-icon name="heroComputerDesktop" class="w-5 h-5 text-white"></ng-icon>
+      <div class="flex items-center mb-3">
+        <div class="w-6 h-6 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center mr-2">
+          <ng-icon name="heroComputerDesktop" class="w-3 h-3 text-white"></ng-icon>
         </div>
         <div>
-          <h5 class="text-2xl font-bold text-secondary-900">Bot Status</h5>
-          <p class="text-secondary-600">Current automation status and metrics</p>
+          <h5 class="text-base font-bold text-secondary-900">Bot Status</h5>
+          <p class="text-xs text-secondary-600">Current automation status and metrics</p>
         </div>
       </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
         <!-- Status -->
-        <div class="group bg-gradient-to-br from-success-50 to-success-100/50 rounded-lg p-6 hover:shadow-soft transition-all duration-300 border border-success-200/50">
-          <div class="flex items-center gap-4">
-            <div class="w-8 h-8 bg-gradient-to-br from-success-500 to-success-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-              <ng-icon name="heroCheckCircle" class="w-4 h-4 text-white"></ng-icon>
+        <div class="group bg-gradient-to-br from-success-50 to-success-100/50 rounded-lg p-3 hover:shadow-soft transition-all duration-300 border border-success-200/50">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 bg-gradient-to-br from-success-500 to-success-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <ng-icon name="heroCheckCircle" class="w-3 h-3 text-white"></ng-icon>
             </div>
             <div>
-              <div class="text-sm font-medium text-success-600 mb-1">Current Status</div>
-              <div class="text-xl font-bold text-success-700 flex items-center">
+              <div class="text-xs font-medium text-success-600 mb-1">Current Status</div>
+              <div class="text-sm font-bold text-success-700 flex items-center">
                 <span>Active</span>
                 <div class="ml-2 w-2 h-2 bg-success-500 rounded-full animate-pulse-soft"></div>
               </div>
@@ -272,26 +272,26 @@
         </div>
         
         <!-- Last Run -->
-        <div class="group bg-gradient-to-br from-primary-50 to-primary-100/50 rounded-lg p-6 hover:shadow-soft transition-all duration-300 border border-primary-200/50">
-          <div class="flex items-center gap-4">
-            <div class="w-8 h-8 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-              <ng-icon name="heroClock" class="w-4 h-4 text-white"></ng-icon>
+        <div class="group bg-gradient-to-br from-primary-50 to-primary-100/50 rounded-lg p-3 hover:shadow-soft transition-all duration-300 border border-primary-200/50">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <ng-icon name="heroClock" class="w-3 h-3 text-white"></ng-icon>
             </div>
             <div>
-              <div class="text-sm font-medium text-primary-600 mb-1">Last Execution</div>
-              <div class="text-lg font-bold text-primary-700">{{ stats.lastRun | date:'dd/MM HH:mm' }}</div>
+              <div class="text-xs font-medium text-primary-600 mb-1">Last Execution</div>
+              <div class="text-sm font-bold text-primary-700">{{ stats.lastRun | date:'dd/MM HH:mm' }}</div>
             </div>
           </div>
         </div>
         
         <!-- Total Runs -->
-        <div class="group bg-gradient-to-br from-secondary-50 to-secondary-100/50 rounded-lg p-6 hover:shadow-soft transition-all duration-300 border border-secondary-200/50">
-          <div class="flex items-center gap-4">
-            <div class="w-8 h-8 bg-gradient-to-br from-secondary-500 to-secondary-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-              <ng-icon name="heroBolt" class="w-4 h-4 text-white"></ng-icon>
+        <div class="group bg-gradient-to-br from-secondary-50 to-secondary-100/50 rounded-lg p-3 hover:shadow-soft transition-all duration-300 border border-secondary-200/50">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 bg-gradient-to-br from-secondary-500 to-secondary-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <ng-icon name="heroBolt" class="w-3 h-3 text-white"></ng-icon>
             </div>
             <div>
-              <div class="text-sm font-medium text-secondary-600 mb-1">Total Executions</div>
+              <div class="text-xs font-medium text-secondary-600 mb-1">Total Executions</div>
               <div class="text-xl font-bold text-secondary-700">{{ stats.botRuns }}</div>
             </div>
           </div>
