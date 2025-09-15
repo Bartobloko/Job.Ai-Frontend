@@ -4,16 +4,19 @@ import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
 import {JobsService} from '../../utils/data-acces/jobs-service/jobs.service';
 import {StatsService} from './utils/stats-service/stats.service';
 import {Log} from './utils/interfaces/log';
-import {DatePipe} from '@angular/common';
+import {DatePipe, CommonModule} from '@angular/common';
 import {SettingsStore} from '../../utils/state/settings/settings.state';
 import {firstValueFrom} from 'rxjs';
+import { NgIconComponent } from '@ng-icons/core';
 
 @Component({
   selector: 'app-dashboard',
   imports: [
     FormsModule,
     DatePipe,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgIconComponent,
+    CommonModule
   ],
   templateUrl: './dashboard.component.html',
   standalone: true,

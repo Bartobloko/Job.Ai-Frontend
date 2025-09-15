@@ -1,76 +1,105 @@
 <!-- Main Navigation -->
-<nav class="bg-white border-b border-gray-200 px-4 py-2.5 fixed left-0 right-0 top-0 z-50">
+<nav class="bg-white/90 backdrop-blur-md border-b border-gray-200/50 px-6 py-4 fixed left-0 right-0 top-0 z-50 shadow-soft">
   <div class="flex flex-wrap justify-between items-center">
     <!-- Logo and Brand -->
     <div class="flex items-center">
-      <a href="#" class="flex items-center">
-        <svg class="w-8 h-8 text-primary-600 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-        <span class="self-center text-2xl font-semibold whitespace-nowrap text-primary-600">Job.AI</span>
+      <a href="#" class="flex items-center group">
+        <div class="relative">
+          <ng-icon name="heroBriefcase" class="w-8 h-8 text-primary-600 mr-3 transition-all duration-300 group-hover:scale-110 group-hover:text-primary-700"></ng-icon>
+          <div class="absolute -top-1 -right-1 w-3 h-3 bg-primary-500 rounded-full animate-pulse-soft opacity-75"></div>
+        </div>
+        <span class="self-center text-2xl font-bold whitespace-nowrap bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent">Job.AI</span>
       </a>
     </div>
 
     <!-- Navigation Links -->
     <div class="flex items-center lg:order-2">
       <!-- Navigation Items -->
-      <div class="hidden lg:flex items-center">
-        <div routerLink="dashboard" class="py-2 px-3 text-gray-900 rounded-lg hover:bg-gray-100 hover:cursor-pointer">Dashboard</div>
-        <div routerLink="jobs" class="py-2 px-3 text-gray-900 rounded-lg hover:bg-gray-100 hover:cursor-pointer">Job Listings</div>
-        <div routerLink="settings" class="py-2 px-3 text-gray-900 rounded-lg hover:bg-gray-100 hover:cursor-pointer">Settings</div>
+      <div class="hidden lg:flex items-center space-x-1">
+        <a routerLink="dashboard" 
+           routerLinkActive="bg-primary-50 text-primary-700 shadow-sm"
+           class="flex items-center space-x-2 py-2.5 px-4 text-secondary-700 rounded-xl hover:bg-primary-50 hover:text-primary-700 transition-all duration-200 cursor-pointer group">
+          <ng-icon name="heroHome" class="w-5 h-5 transition-transform duration-200 group-hover:scale-110"></ng-icon>
+          <span class="font-medium">Dashboard</span>
+        </a>
+        <a routerLink="jobs" 
+           routerLinkActive="bg-primary-50 text-primary-700 shadow-sm"
+           class="flex items-center space-x-2 py-2.5 px-4 text-secondary-700 rounded-xl hover:bg-primary-50 hover:text-primary-700 transition-all duration-200 cursor-pointer group">
+          <ng-icon name="heroDocument" class="w-5 h-5 transition-transform duration-200 group-hover:scale-110"></ng-icon>
+          <span class="font-medium">Job Listings</span>
+        </a>
+        <a routerLink="settings" 
+           routerLinkActive="bg-primary-50 text-primary-700 shadow-sm"
+           class="flex items-center space-x-2 py-2.5 px-4 text-secondary-700 rounded-xl hover:bg-primary-50 hover:text-primary-700 transition-all duration-200 cursor-pointer group">
+          <ng-icon name="heroCog6Tooth" class="w-5 h-5 transition-transform duration-200 group-hover:scale-110"></ng-icon>
+          <span class="font-medium">Settings</span>
+        </a>
       </div>
 
       <!-- Account Dropdown -->
       @if (userStore.username()){
-        <div class="relative ml-3">
+        <div class="relative ml-4 account-dropdown">
           <button
             type="button"
-            class="flex items-center py-2 px-4 text-sm font-medium text-gray-900 rounded-lg hover:bg-gray-100 hover:cursor-pointer"
+            class="flex items-center py-2.5 px-4 text-sm font-medium text-secondary-700 rounded-xl hover:bg-secondary-50 transition-all duration-200 group border border-secondary-200"
             (click)="toggleAccountDropdown()"
           >
-            <svg class="w-6 h-6 mr-2 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-            </svg>
-            {{userStore.username()}}
-            <svg class="w-4 h-4 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
+            <div class="w-8 h-8 mr-3 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center">
+              <ng-icon name="heroUser" class="w-4 h-4 text-white"></ng-icon>
+            </div>
+            <span class="max-w-32 truncate">{{userStore.username()}}</span>
+            <ng-icon 
+              name="heroChevronDown" 
+              class="w-4 h-4 ml-2 transition-transform duration-200"
+              [class.rotate-180]="isAccountDropdownOpen">
+            </ng-icon>
           </button>
 
           <!-- Account Dropdown Menu -->
           @if (isAccountDropdownOpen) {
             <div
-              class="absolute right-0 mt-2 w-60 bg-white rounded-lg shadow-lg py-2 border border-gray-200"
+              class="absolute right-0 mt-3 w-72 bg-white rounded-2xl shadow-large py-3 border border-secondary-200/50 backdrop-blur-sm animate-slide-down"
             >
-              <!-- Account List -->
-              <div class="px-3 py-2 text-sm text-gray-900 border-b border-gray-200">
-                <div class="font-semibold">Accounts</div>
+              <!-- Account List Header -->
+              <div class="px-4 py-2 text-sm text-secondary-600 border-b border-secondary-100">
+                <div class="font-semibold flex items-center">
+                  <ng-icon name="heroUsers" class="w-4 h-4 mr-2"></ng-icon>
+                  Switch Account
+                </div>
               </div>
-              @for (account of accounts; track account) {
-                <button
-                  (click)="selectAccount(account)"
-                  class="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  <!--                 [class.bg-gray-50]="currentAccount.id === account.id"-->
-                  <svg class="w-4 h-4 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                  <div class="flex flex-col">
-                    <span class="font-medium">{{ account.username }}</span>
-                  </div>
-                </button>
-              }
+              
+              <!-- Account List -->
+              <div class="max-h-48 overflow-y-auto py-2">
+                @for (account of accounts; track account) {
+                  <button
+                    (click)="selectAccount(account)"
+                    class="flex items-center w-full px-4 py-3 text-sm text-secondary-700 hover:bg-primary-50 hover:text-primary-700 transition-all duration-200 group"
+                  >
+                    <div class="w-8 h-8 mr-3 bg-gradient-to-br from-secondary-400 to-secondary-500 rounded-full flex items-center justify-center group-hover:from-primary-400 group-hover:to-primary-500 transition-all duration-200">
+                      <ng-icon name="heroUser" class="w-4 h-4 text-white"></ng-icon>
+                    </div>
+                    <div class="flex flex-col items-start">
+                      <span class="font-medium">{{ account.username }}</span>
+                      <span class="text-xs text-secondary-500">Active Account</span>
+                    </div>
+                    @if (userStore.username() === account.username) {
+                      <ng-icon name="heroCheck" class="w-4 h-4 ml-auto text-success-500"></ng-icon>
+                    }
+                  </button>
+                }
+              </div>
+              
               <!-- Create New Account Button -->
-              <div class="border-t border-gray-200 mt-2 pt-2">
+              <div class="border-t border-secondary-100 mt-2 pt-2">
                 <button
                   (click)="toggleAccountDropdown()"
                   routerLink="auth"
-                  class="flex items-center w-full px-4 py-2 text-sm text-primary-600 hover:bg-gray-100"
+                  class="flex items-center w-full px-4 py-3 text-sm text-primary-600 hover:bg-primary-50 transition-all duration-200 group"
                 >
-                  <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                  </svg>
-                  Create New Account
+                  <div class="w-8 h-8 mr-3 bg-primary-100 rounded-full flex items-center justify-center group-hover:bg-primary-200 transition-all duration-200">
+                    <ng-icon name="heroPlus" class="w-4 h-4 text-primary-600"></ng-icon>
+                  </div>
+                  <span class="font-medium">Create New Account</span>
                 </button>
               </div>
             </div>
@@ -82,37 +111,52 @@
       <!-- Mobile menu button -->
       <button
         type="button"
-        class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none"
+        class="inline-flex items-center p-2.5 ml-2 text-sm text-secondary-600 rounded-xl lg:hidden hover:bg-secondary-100 focus:outline-none transition-all duration-200 mobile-menu"
         (click)="toggleMobileMenu()"
         >
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
-        </svg>
+        <ng-icon 
+          name="heroBars3" 
+          class="w-6 h-6 transition-transform duration-200"
+          [class.rotate-90]="isMobileMenuOpen">
+        </ng-icon>
       </button>
     </div>
 
     <!-- Mobile Menu -->
-    <div
-      class="items-center justify-between w-full lg:hidden"
-      [class.hidden]="!isMobileMenuOpen"
-      >
-      <ul class="flex flex-col mt-4 font-medium">
-        <li>
-          <div routerLink="dashboard" class="block py-2 px-3 text-gray-900 rounded-lg hover:bg-gray-100">Dashboard</div>
-        </li>
-        <li>
-          <div routerLink="jobs" class="block py-2 px-3 text-gray-900 rounded-lg hover:bg-gray-100">Job Listings</div>
-        </li>
-        <li>
-          <div routerLink="settings" class="block py-2 px-3 text-gray-900 rounded-lg hover:bg-gray-100">Settings</div>
-        </li>
-      </ul>
-    </div>
+    @if (isMobileMenuOpen) {
+      <div class="w-full lg:hidden mt-4 mobile-menu animate-slide-down">
+        <div class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-medium border border-secondary-200/50 p-4 mx-2">
+          <nav class="flex flex-col space-y-1">
+            <a routerLink="dashboard" 
+               routerLinkActive="bg-primary-50 text-primary-700 shadow-sm"
+               class="flex items-center space-x-3 py-3 px-4 text-secondary-700 rounded-xl hover:bg-primary-50 hover:text-primary-700 transition-all duration-200 group"
+               (click)="toggleMobileMenu()">
+              <ng-icon name="heroHome" class="w-5 h-5 transition-transform duration-200 group-hover:scale-110"></ng-icon>
+              <span class="font-medium">Dashboard</span>
+            </a>
+            <a routerLink="jobs" 
+               routerLinkActive="bg-primary-50 text-primary-700 shadow-sm"
+               class="flex items-center space-x-3 py-3 px-4 text-secondary-700 rounded-xl hover:bg-primary-50 hover:text-primary-700 transition-all duration-200 group"
+               (click)="toggleMobileMenu()">
+              <ng-icon name="heroDocument" class="w-5 h-5 transition-transform duration-200 group-hover:scale-110"></ng-icon>
+              <span class="font-medium">Job Listings</span>
+            </a>
+            <a routerLink="settings" 
+               routerLinkActive="bg-primary-50 text-primary-700 shadow-sm"
+               class="flex items-center space-x-3 py-3 px-4 text-secondary-700 rounded-xl hover:bg-primary-50 hover:text-primary-700 transition-all duration-200 group"
+               (click)="toggleMobileMenu()">
+              <ng-icon name="heroCog6Tooth" class="w-5 h-5 transition-transform duration-200 group-hover:scale-110"></ng-icon>
+              <span class="font-medium">Settings</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+    }
   </div>
 </nav>
 
 <!-- Spacer to prevent content from going under fixed navbar -->
-<div class="h-[61px]"></div>
+<div class="h-20"></div>
 
 
 

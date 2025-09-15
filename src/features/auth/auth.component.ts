@@ -4,13 +4,15 @@ import {UsersStore} from '../../utils/state/users/users.state';
 import {AuthService} from '../../utils/data-acces/auth/auth.service';
 import {UserStore} from '../../utils/state/user/user.state';
 import {Router} from '@angular/router';
-import {NgClass} from '@angular/common';
+import {CommonModule} from '@angular/common';
+import { NgIconComponent } from '@ng-icons/core';
 
 @Component({
     selector: 'app-auth',
   imports: [
     AccountCreateFormComponent,
-    NgClass
+    CommonModule,
+    NgIconComponent
   ],
     templateUrl: './auth.component.html',
     styleUrl: './auth.component.scss'

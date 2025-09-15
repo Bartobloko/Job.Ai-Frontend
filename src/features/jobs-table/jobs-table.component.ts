@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { JobsService } from '../../utils/data-acces/jobs-service/jobs.service';
-import {DatePipe, SlicePipe, TitleCasePipe} from '@angular/common';
+import {DatePipe, SlicePipe, CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {Job} from '../../utils/interfaces/job';
+import { NgIconComponent } from '@ng-icons/core';
 
 @Component({
     selector: 'app-jobs-table',
     imports: [
     DatePipe,
     SlicePipe,
-    TitleCasePipe,
-    FormsModule
+    FormsModule,
+    NgIconComponent,
+    CommonModule
 ],
     templateUrl: './jobs-table.component.html',
     styleUrls: ['./jobs-table.component.scss']
