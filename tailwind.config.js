@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       minHeight: {
-        'noScroll': 'calc(100vh - 32px)',
+        'noScroll': 'calc(100vh - 48px)',
       },
       colors: {
         primary: {
